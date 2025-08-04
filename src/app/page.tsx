@@ -1,103 +1,109 @@
-import Image from "next/image";
+'use client';
+
+import WalletConnection from '../components/WalletConnection';
+import CounterDisplay from '../components/CounterDisplay';
+import CounterControls from '../components/CounterControls';
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen bg-gray-50 py-8">
+      <div className="max-w-4xl mx-auto px-4">
+        {/* Header */}
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-bold text-gray-900 mb-2">
+            Web3 Counter App
+          </h1>
+          <p className="text-lg text-gray-600">
+            A decentralized counter on Polygon Amoy testnet
+          </p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Main App Content */}
+        <div className="space-y-6">
+          {/* Wallet Connection Section */}
+          <WalletConnection />
+
+          {/* Counter Display and Controls */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <CounterDisplay />
+            <CounterControls />
+          </div>
+
+          {/* Instructions */}
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+            <h2 className="text-lg font-semibold text-blue-800 mb-3">
+              How to Use
+            </h2>
+            <ol className="list-decimal list-inside text-blue-700 space-y-2">
+              <li>Connect your MetaMask wallet using the button above</li>
+              <li>Make sure you're on the Polygon Amoy testnet</li>
+              <li>View the current counter value in the display panel</li>
+              <li>Click "Increment Counter" to add 1 to the shared counter</li>
+              <li>Monitor your transaction status and view on Polygonscan</li>
+            </ol>
+          </div>
+
+          {/* Network Information */}
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
+            <h2 className="text-lg font-semibold text-gray-800 mb-3">
+              Network Information
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-700">
+              <div>
+                <p className="font-medium">Network:</p>
+                <p>Polygon Amoy Testnet</p>
+              </div>
+              <div>
+                <p className="font-medium">Chain ID:</p>
+                <p>80002</p>
+              </div>
+              <div>
+                <p className="font-medium">Currency:</p>
+                <p>MATIC (testnet)</p>
+              </div>
+              <div>
+                <p className="font-medium">Explorer:</p>
+                <a 
+                  href="https://amoy.polygonscan.com/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:text-blue-800 underline"
+                >
+                  Polygonscan Amoy
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Get Test MATIC */}
+          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+            <h2 className="text-lg font-semibold text-yellow-800 mb-3">
+              Need Test MATIC?
+            </h2>
+            <p className="text-yellow-700 mb-3">
+              You'll need some test MATIC to pay for transaction fees. Get free test tokens from the Polygon faucet:
+            </p>
+            <a
+              href="https://faucet.polygon.technology/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition-colors"
+            >
+              <svg className="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+              Get Test MATIC
+            </a>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <footer className="mt-12 pt-8 border-t border-gray-200 text-center text-gray-600">
+          <p className="text-sm">
+            Built with Next.js, Web3.js, and deployed on Polygon Amoy testnet
+          </p>
+        </footer>
+      </div>
     </div>
   );
 }
